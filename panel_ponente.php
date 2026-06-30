@@ -19,7 +19,7 @@ $archivos = $conn->query($sql_archivos);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Panel del Ponente - Congreso 2026</title>
+    <title>Panel del Ponente - Congreso 2026 - MI CAMBIO 333</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/stylesP.css">
     <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
