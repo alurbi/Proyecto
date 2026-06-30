@@ -1,0 +1,474 @@
+/* =====================================================
+   CONGRESO INTERNACIONAL 2026 — HOJA DE ESTILOS
+   Archivo: stylesP.css
+   Descripción: Estilos principales del sitio.
+   Secciones:
+     1. Variables y configuración global
+     2. Utilidades generales
+     3. Tipografía
+     4. Navegación
+     5. Hero e Información del evento
+     6. Carrusel de imágenes
+     7. Formularios (Registro y Login)
+     8. Botones
+     9. Panel Administrativo
+    10. Footer
+    11. Responsive (mobile)
+===================================================== */
+
+
+/* =====================================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   Define la paleta de colores reutilizable y el
+   modelo de caja estándar para todo el documento.
+===================================================== */
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #FF2A00;
+    --secundario: #6200ee;
+    --grisClaro: #f4f4f9;
+    --grisBorde: #e1e1e1;
+}
+
+html {
+    font-size: 62.5%;
+    /* 1rem = 10px para facilitar cálculos */
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+    /* Propaga el modelo de caja a todos los elementos */
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--grisClaro) 0%, var(--blanco) 100%);
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   2. UTILIDADES GENERALES
+   Clases reutilizables de layout y decoración.
+===================================================== */
+
+/* Centra el contenido con ancho máximo de 1200px */
+.contenedor {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tarjeta elevada con sombra y fondo blanco */
+.sombra {
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.1);
+    background-color: var(--blanco);
+    padding: 3rem;
+    border-radius: 1rem;
+}
+
+
+/* =====================================================
+   3. TIPOGRAFÍA
+   Estilos para títulos y encabezados del sitio.
+===================================================== */
+
+/* Título principal del header con año en degradado */
+.titulo {
+    font-size: 3.8rem;
+    text-align: left;
+    margin: 2rem 0;
+}
+
+.titulo span {
+    /* Aplica degradado rojo-morado al texto "2026" */
+    background: linear-gradient(to right, var(--primario), var(--secundario));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+
+/* =====================================================
+   4. NAVEGACIÓN
+   Barra de menú principal con fondo oscuro.
+===================================================== */
+
+.nav-bg {
+    background-color: var(--oscuro);
+    border-bottom: 3px solid var(--secundario);
+    /* Línea de acento morada */
+}
+
+.menu-lista {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 0;
+    padding: 1rem 0;
+}
+
+.menu-lista a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding: 1rem;
+    transition: color .3s ease;
+}
+
+/* Efecto hover: cambia el enlace a color primario (rojo) */
+.menu-lista a:hover {
+    color: var(--primario);
+}
+
+
+/* =====================================================
+   5. HERO E INFORMACIÓN DEL EVENTO
+   Sección de bienvenida y tarjetas de datos del congreso.
+===================================================== */
+
+/* Banner principal con imagen de fondo oscurecida */
+.hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../img/fondo.webp);
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--blanco);
+    text-align: center;
+}
+
+/* Grid responsivo de 4 tarjetas de información */
+.info-evento {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* Tarjeta individual: usada en info, documentos y admin */
+.card {
+    background-color: var(--blanco);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid #eee;
+    transition: transform .3s ease, box-shadow .3s ease;
+    text-align: center;
+}
+
+/* Efecto de elevación al pasar el cursor */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+/* =====================================================
+   6. CARRUSEL DE IMÁGENES
+   Slider horizontal controlado con jQuery.
+===================================================== */
+
+.carrusel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    /* Oculta los slides fuera del área visible */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Fila de slides; se desplaza con transform: translateX */
+.carrusel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Cada slide ocupa el 100% del ancho del contenedor */
+.carrusel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carrusel-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    /* Recorta la imagen para que llene el espacio */
+}
+
+/* Botones de navegación anterior/siguiente */
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.carrusel-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.btn-prev {
+    left: 10px;
+}
+
+.btn-next {
+    right: 10px;
+}
+
+/* Puntos indicadores del slide activo */
+.carrusel-indicadores {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #333;
+    /* Punto oscuro = slide activo */
+}
+
+
+/* =====================================================
+   7. FORMULARIOS — REGISTRO Y LOGIN
+   Estilos compartidos para todos los formularios del sitio.
+===================================================== */
+
+.formulario {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.formulario fieldset {
+    border: none;
+    margin-bottom: 3rem;
+    padding: 0;
+}
+
+/* Leyenda como encabezado de sección del formulario */
+.formulario legend {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--secundario);
+    border-bottom: 2px solid var(--grisClaro);
+    width: 100%;
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+    display: block;
+}
+
+/* Cada campo apila la etiqueta encima del input */
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.campo label {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+/* Estilos compartidos para todos los tipos de input y select */
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="tel"],
+.campo input[type="password"],
+.campo select,
+.campo input[type="file"] {
+    padding: 1.2rem;
+    border: 1px solid var(--grisBorde);
+    border-radius: 0.8rem;
+    font-size: 1.6rem;
+    font-family: inherit;
+    transition: border-color .3s, box-shadow .3s;
+}
+
+/* Resaltado morado al enfocar un campo */
+.campo input:focus,
+.campo select:focus {
+    outline: none;
+    border-color: var(--secundario);
+    box-shadow: 0 0 0 3px rgba(98, 0, 238, 0.1);
+}
+
+
+/* =====================================================
+   8. BOTONES
+   Botón principal del sitio con efecto hover.
+===================================================== */
+
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1.2rem 3rem;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: .8rem;
+    border: none;
+    cursor: pointer;
+    transition: all .3s ease;
+    text-align: center;
+}
+
+/* Oscurece el fondo y eleva ligeramente el botón al hacer hover */
+.boton:hover {
+    background-color: #4a00b8;
+    transform: translateY(-2px);
+}
+
+/* Modificador: botón que ocupa todo el ancho disponible */
+.w-100 {
+    width: 100%;
+}
+
+/* Alinea el botón (u otro elemento) al lado derecho */
+.alinear-derecha {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* =====================================================
+   9. PANEL ADMINISTRATIVO
+   Estadísticas y tabla de registros para administradores.
+===================================================== */
+
+/* Grid de 3 columnas para las tarjetas de estadísticas */
+.admin-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+/* Número grande en color primario para destacar métricas */
+.numero {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primario);
+}
+
+/* Contenedor de la tabla con scroll horizontal en pantallas pequeñas */
+.contenedor-tabla {
+    background-color: var(--blanco);
+    border-radius: 1rem;
+    overflow-x: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin: 2rem 0;
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+    /* Evita que la tabla se comprima demasiado */
+}
+
+.tabla-admin th {
+    background-color: #f8f9fa;
+    color: var(--oscuro);
+    padding: 1.5rem;
+    text-align: left;
+    border-bottom: 2px solid var(--grisClaro);
+}
+
+.tabla-admin td {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--grisClaro);
+}
+
+/* Resalta la fila al pasar el cursor */
+.tabla-admin tr:hover {
+    background-color: #f1f1ff;
+}
+
+
+/* =====================================================
+   10. FOOTER
+   Pie de página con fondo oscuro.
+===================================================== */
+
+footer {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--oscuro);
+    color: var(--blanco);
+    margin-top: 5rem;
+}
+
+
+/* =====================================================
+   11. RESPONSIVE — MOBILE (max-width: 768px)
+   Ajustes de layout para pantallas pequeñas.
+===================================================== */
+
+@media (max-width: 768px) {
+
+    /* Menú en columna vertical centrada */
+    .menu-lista {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* Título más pequeño y centrado en móvil */
+    .titulo {
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    /* Las estadísticas del admin pasan a una sola columna */
+    .admin-stats {
+        grid-template-columns: 1fr;
+    }
+
+    /* Hero más bajo en pantallas pequeñas */
+    .hero {
+        height: 300px;
+    }
+
+    /* Los botones ocupan todo el ancho en móvil */
+    .boton {
+        width: 100%;
+    }
+}

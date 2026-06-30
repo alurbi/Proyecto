@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Congreso Internacional 2026</title>
+
+    <!-- Estilos base y personalizados -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/stylesP.css">
+
+    <!-- Fuente tipográfica desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Krub:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Librería jQuery para el carrusel y otras interacciones -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <!-- ========== ENCABEZADO ========== -->
+    <header>
+        <h1 class="titulo">Congreso Internacional <span>2026</span></h1>
+    </header>
+
+    <!-- ========== BARRA DE NAVEGACIÓN ========== -->
+    <div class="nav-bg">
+        <nav class="navegacion-principal contenedor">
+            <ul class="menu-lista">
+                <li><a href="HOME.html">Inicio</a></li>
+                <li><a href="#">Programa</a></li>
+                <li><a href="#">Ponencias</a></li>
+                <li><a href="#">Memoria</a></li>
+                <li><a href="./registro.php">Registro</a></li>
+                <li><a href="#">Pagos</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- ========== HERO / CARTEL PROMOCIONAL ========== -->
+    <!-- Sección de bienvenida con imagen de fondo y texto principal -->
+    <section class="hero">
+        <div class="contenido-hero">
+            <h2>Transformación Digital y Tecnología</h2>
+            <p>Un espacio para compartir conocimiento e innovación</p>
+        </div>
+    </section>
+
+    <!-- ========== CONTENIDO PRINCIPAL ========== -->
+    <main class="contenedor sombra">
+
+        <!-- INFORMACIÓN GENERAL DEL EVENTO -->
+        <h2>Información del Evento</h2>
+
+        <div class="info-evento">
+            <div class="card">
+                <h3>Fecha</h3>
+                <p>15 - 17 Octubre 2026</p>
+            </div>
+
+            <div class="card">
+                <h3>Lugar</h3>
+                <p>Centro de Convenciones, Guadalajara</p>
+            </div>
+
+            <div class="card">
+                <h3>Hora</h3>
+                <p>9:00 AM - 6:00 PM</p>
+            </div>
+
+            <div class="card">
+                <h3>Temática</h3>
+                <p>Innovación, IA, Desarrollo Web y Sistemas</p>
+            </div>
+        </div>
+
+        <!-- ===== CARRUSEL DE IMÁGENES (con jQuery) ===== -->
+        <!-- Muestra imágenes del evento con navegación manual y auto-avance -->
+        <section class="carrusel-container">
+            <div class="carrusel-slides">
+                <div class="carrusel-slide">
+                    <img src="img/carrusel1.jpg" alt="Congreso 2026 - Ponencia">
+                </div>
+                <div class="carrusel-slide">
+                    <img src="img/carrusel2.jpg" alt="Congreso 2026 - Participantes">
+                </div>
+                <div class="carrusel-slide">
+                    <img src="img/carrusel3.jpg" alt="Congreso 2026 - Tecnología">
+                </div>
+            </div>
+
+            <!-- Botones de navegación del carrusel -->
+            <button class="carrusel-btn btn-prev">❮</button>
+            <button class="carrusel-btn btn-next">❯</button>
+
+            <!-- Puntos indicadores de slide activo -->
+            <div class="carrusel-indicadores"></div>
+        </section>
+
+        <!-- ===== REGISTRO DE ASISTENTES ===== -->
+        <section>
+            <h2>Registro</h2>
+            <div style="text-align: center;" class="registro">
+                <a class="boton" href="registro.php">Registro de Personal</a>
+            </div>
+        </section>
+
+        <!-- ===== SECCIÓN DE PAGO CON PAYPAL ===== -->
+        <section>
+            <h2>Pago</h2>
+            <div class="pago" style="align-items: center;">
+                <!-- Imagen de referencia del método de pago disponible -->
+                <img src="img/pp.png" alt="Pago con PayPal" height="100" width="100" style="align-content: center;">
+            </div>
+        </section>
+
+        <!-- ===== ENVÍO DE DOCUMENTOS ===== -->
+        <!-- El usuario puede subir su ponencia, cartel o artículo -->
+        <section>
+            <h2>Envío de Documentos</h2>
+            <div class="documentos">
+                <div class="card">
+                    <p>Enviar Ponencia</p>
+                </div>
+                <div class="card">
+                    <p>Enviar Cartel</p>
+                </div>
+                <div class="card">
+                    <p>Enviar Artículo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DESCARGA DE CONSTANCIAS ===== -->
+        <section>
+            <h2>Constancias</h2>
+            <div style="text-align: center;" class="centrar-boton">
+                <a class="boton" href="#">Descargar Constancia</a>
+            </div>
+        </section>
+
+        <!-- ===== PANEL ADMINISTRATIVO ===== -->
+        <!-- Accesos restringidos para administradores del congreso -->
+        <section>
+            <h2>Panel Administrativo</h2>
+            <div class="admin">
+                <a href="login.php" class="card">Acceso Registro</a>
+                <a href="login.php" class="card">Acceso Pagos</a>
+                <a href="login.php" class="card">Acceso Base de Datos</a>
+                <a href="login.php" class="card">Elaboración Constancias</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== PIE DE PÁGINA ========== -->
+    <footer>
+        <p>Todos los derechos reservados - Congreso 2026</p>
+    </footer>
+
+
+    <!-- ========================================
+         JAVASCRIPT — CARRUSEL (jQuery)
+         Controla el desplazamiento de slides,
+         los botones anterior/siguiente,
+         los puntos indicadores y el auto-avance.
+    ======================================== -->
+    <script>
+        $(document).ready(function () {
+
+            let slideIndex = 0;
+            const slides = $('.carrusel-slide');
+            const totalSlides = slides.length;
+
+            // Generar dinámicamente los puntos indicadores según el número de slides
+            for (let i = 0; i < totalSlides; i++) {
+                $('.carrusel-indicadores').append('<span class="dot" data-index="' + i + '"></span>');
+            }
+
+            // Función principal: mueve el carrusel al slide indicado por 'index'
+            function mostrarSlide(index) {
+                // Efecto de rotación circular: si se pasa del último vuelve al primero (y viceversa)
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                slideIndex = index;
+
+                // Desplazamiento horizontal usando CSS transform
+                const desplazamiento = -slideIndex * 100;
+                $('.carrusel-slides').css('transform', 'translateX(' + desplazamiento + '%)');
+
+                // Marcar el punto indicador correspondiente al slide actual
+                $('.dot').removeClass('active');
+                $('.dot[data-index="' + slideIndex + '"]').addClass('active');
+            }
+
+            // Botón "siguiente": avanza un slide
+            $('.btn-next').click(function () {
+                mostrarSlide(slideIndex + 1);
+            });
+
+            // Botón "anterior": retrocede un slide
+            $('.btn-prev').click(function () {
+                mostrarSlide(slideIndex - 1);
+            });
+
+            // Clic en un punto indicador: va directo al slide correspondiente
+            $(document).on('click', '.dot', function () {
+                const index = $(this).data('index');
+                mostrarSlide(index);
+            });
+
+            // Auto-avance automático cada 5 segundos
+            setInterval(function () {
+                mostrarSlide(slideIndex + 1);
+            }, 5000);
+
+            // Mostrar el primer slide al cargar la página
+            mostrarSlide(0);
+        });
+    </script>
+
+
+    <!-- ========================================
+         JAVASCRIPT — BARRA DE NOTIFICACIÓN (DOM puro)
+         Crea e inserta dinámicamente una barra
+         con un saludo según la hora del día.
+    ======================================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // 1. createElement — crea un nuevo <div> que servirá como barra de notificación
+            const barraNotificacion = document.createElement("div");
+
+            // Lógica para personalizar el saludo según la hora local del usuario
+            const hora = new Date().getHours();
+            let textoSaludo = "";
+
+            if (hora < 12) {
+                textoSaludo = "¡Buenos días!";
+            } else if (hora < 19) {
+                textoSaludo = "¡Buenas tardes!";
+            } else {
+                textoSaludo = "¡Buenas noches!";
+            }
+
+            // 2. textContent / style — asigna el texto y aplica estilos en línea al elemento creado
+            barraNotificacion.textContent = textoSaludo + " Aún estás a tiempo de registrar tus ponencias para el Congreso 2026.";
+            barraNotificacion.style.backgroundColor = "var(--secundario, #6200ee)";
+            barraNotificacion.style.color = "white";
+            barraNotificacion.style.textAlign = "center";
+            barraNotificacion.style.padding = "1.5rem";
+            barraNotificacion.style.fontWeight = "bold";
+            barraNotificacion.style.fontSize = "1.8rem";
+
+            // 3. querySelector / insertBefore — selecciona el <main> e inserta la barra justo antes de él
+            const contenedorMain = document.querySelector("main");
+            document.body.insertBefore(barraNotificacion, contenedorMain);
+        });
+    </script>
+
+</body>
+
+</html>
